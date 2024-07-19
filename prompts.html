@@ -8,23 +8,43 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #0086D4;
         }
         label {
             display: block;
             margin-top: 10px;
+            color: #0086D4;
         }
-        textarea {
+        textarea, input, select {
             width: 100%;
-            height: 100px;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            color: gray;
         }
         button {
             margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #F89D21;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e0841c;
         }
         .output {
             margin-top: 20px;
             padding: 10px;
             border: 1px solid #ccc;
             background-color: #f9f9f9;
+            color: #333;
         }
     </style>
 </head>
@@ -32,16 +52,16 @@
     <h1>Prompter Helper App</h1>
     <form id="prompterForm">
         <label for="task">Task:</label>
-        <input type="text" id="task" name="task" required>
+        <textarea id="task" name="task" required>Create an image, generate HTML table</textarea>
         
         <label for="context">Context:</label>
-        <input type="text" id="context" name="context" required>
+        <textarea id="context" name="context" required>Suppose year is 2400 with near galaxy</textarea>
         
         <label for="format">Format:</label>
-        <input type="text" id="format" name="format" required>
+        <input type="text" id="format" name="format" required value="3 paragraphs, 300 words, 250 max characters">
         
         <label for="persona">Persona:</label>
-        <input type="text" id="persona" name="persona" required>
+        <input type="text" id="persona" name="persona" required value="Enter the persona here...">
         
         <label for="style">Style:</label>
         <select id="style" name="style" required>
@@ -91,15 +111,55 @@
             <option value="Objective">Objective</option>
         </select>
         
+        <label for="structure">Structure:</label>
+        <select id="structure" name="structure" required>
+            <option value="Hero's Journey">Dramatic Style: Hero's Journey</option>
+            <option value="3 Act Structure">3 Act Structure</option>
+        </select>
+        
         <label for="exemplar">Exemplar:</label>
-        <textarea id="exemplar" name="exemplar" required></textarea>
+        <textarea id="exemplar" name="exemplar" required>Once there was a boy long time ago,</textarea>
         
         <button type="button" onclick="generatePrompt()">Generate Prompt</button>
+        <button type="button" onclick="copyToClipboard()">Copy to Clipboard</button>
+        <button type="button" onclick="resetForm()">Reset</button>
     </form>
     
     <div id="output" class="output"></div>
     
     <script>
+        // Function to clear default text on focus
+        function clearDefaultText(element, defaultText) {
+            if (element.value === defaultText) {
+                element.value = '';
+                element.style.color = 'black';
+            }
+        }
+        
+        // Function to restore default text on blur if empty
+        function restoreDefaultText(element, defaultText) {
+            if (element.value === '') {
+                element.value = defaultText;
+                element.style.color = 'gray';
+            }
+        }
+        
+        // Add event listeners for focus and blur on inputs and textareas
+        document.getElementById('task').addEventListener('focus', function() { clearDefaultText(this, 'Create an image, generate HTML table'); });
+        document.getElementById('task').addEventListener('blur', function() { restoreDefaultText(this, 'Create an image, generate HTML table'); });
+        
+        document.getElementById('context').addEventListener('focus', function() { clearDefaultText(this, 'Suppose year is 2400 with near galaxy'); });
+        document.getElementById('context').addEventListener('blur', function() { restoreDefaultText(this, 'Suppose year is 2400 with near galaxy'); });
+        
+        document.getElementById('format').addEventListener('focus', function() { clearDefaultText(this, '3 paragraphs, 300 words, 250 max characters'); });
+        document.getElementById('format').addEventListener('blur', function() { restoreDefaultText(this, '3 paragraphs, 300 words, 250 max characters'); });
+        
+        document.getElementById('persona').addEventListener('focus', function() { clearDefaultText(this, 'Enter the persona here...'); });
+        document.getElementById('persona').addEventListener('blur', function() { restoreDefaultText(this, 'Enter the persona here...'); });
+        
+        document.getElementById('exemplar').addEventListener('focus', function() { clearDefaultText(this, 'Once there was a boy long time ago,'); });
+        document.getElementById('exemplar').addEventListener('blur', function() { restoreDefaultText(this, 'Once there was a boy long time ago,'); });
+
         // Function to generate the prompt based on the input values
         function generatePrompt() {
             // Retrieve input values from the form
@@ -109,6 +169,7 @@
             const persona = document.getElementById('persona').value;
             const style = document.getElementById('style').value;
             const tone = document.getElementById('tone').value;
+            const structure = document.getElementById('structure').value;
             const exemplar = document.getElementById('exemplar').value;
             
             // Create the prompt string
@@ -119,11 +180,45 @@
                 [Persona: ${persona}]
                 [Style: ${style}]
                 [Tone: ${tone}]
+                [Structure: ${structure}]
                 [Exemplar: ${exemplar}]
             `;
             
             // Display the generated prompt in the output div
             document.getElementById('output').innerText = prompt;
+        }
+
+        // Function to copy the generated prompt to the clipboard
+        function copyToClipboard() {
+            const outputDiv = document.getElementById('output');
+            const text = outputDiv.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Prompt copied to clipboard!');
+            }, (err) => {
+                alert('Failed to copy prompt!');
+            });
+        }
+
+        // Function to reset the form to default values
+        function resetForm() {
+            document.getElementById('task').value = 'Create an image, generate HTML table';
+            document.getElementById('context').value = 'Suppose year is 2400 with near galaxy';
+            document.getElementById('format').value = '3 paragraphs, 300 words, 250 max characters';
+            document.getElementById('persona').value = 'Enter the persona here...';
+            document.getElementById('style').value = 'Descriptive';
+            document.getElementById('tone').value = 'Formal';
+            document.getElementById('structure').value = "Hero's Journey";
+            document.getElementById('exemplar').value = 'Once there was a boy long time ago,';
+            
+            // Reset text color
+            document.getElementById('task').style.color = 'gray';
+            document.getElementById('context').style.color = 'gray';
+            document.getElementById('format').style.color = 'gray';
+            document.getElementById('persona').style.color = 'gray';
+            document.getElementById('exemplar').style.color = 'gray';
+
+            // Clear output div
+            document.getElementById('output').innerText = '';
         }
     </script>
 </body>
