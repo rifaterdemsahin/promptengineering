@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompter Helper App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+        button {
+            margin-top: 10px;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prompter Helper App</h1>
+    <form id="prompterForm">
+        <label for="task">Task:</label>
+        <input type="text" id="task" name="task" required>
+        
+        <label for="context">Context:</label>
+        <input type="text" id="context" name="context" required>
+        
+        <label for="format">Format:</label>
+        <input type="text" id="format" name="format" required>
+        
+        <label for="persona">Persona:</label>
+        <input type="text" id="persona" name="persona" required>
+        
+        <label for="style">Style:</label>
+        <select id="style" name="style" required>
+            <option value="Descriptive">Descriptive</option>
+            <option value="Persuasive">Persuasive</option>
+            <option value="Narrative">Narrative</option>
+            <option value="Expository">Expository</option>
+            <option value="Technical">Technical</option>
+            <option value="Academic">Academic</option>
+            <option value="Creative">Creative</option>
+            <option value="Informal">Informal</option>
+            <option value="Formal">Formal</option>
+            <option value="Humorous">Humorous</option>
+            <option value="Satirical">Satirical</option>
+            <option value="Ironical">Ironical</option>
+            <option value="Dramatic">Dramatic</option>
+            <option value="Poetic">Poetic</option>
+            <option value="Mystical">Mystical</option>
+            <option value="Suspenseful">Suspenseful</option>
+            <option value="Romantic">Romantic</option>
+            <option value="Realistic">Realistic</option>
+            <option value="Surrealistic">Surrealistic</option>
+            <option value="Gothic">Gothic</option>
+        </select>
+        
+        <label for="tone">Tone:</label>
+        <select id="tone" name="tone" required>
+            <option value="Formal">Formal</option>
+            <option value="Informal">Informal</option>
+            <option value="Serious">Serious</option>
+            <option value="Humorous">Humorous</option>
+            <option value="Sarcastic">Sarcastic</option>
+            <option value="Ironical">Ironical</option>
+            <option value="Cynical">Cynical</option>
+            <option value="Satirical">Satirical</option>
+            <option value="Confident">Confident</option>
+            <option value="Doubtful">Doubtful</option>
+            <option value="Optimistic">Optimistic</option>
+            <option value="Pessimistic">Pessimistic</option>
+            <option value="Sympathetic">Sympathetic</option>
+            <option value="Empathetic">Empathetic</option>
+            <option value="Angry">Angry</option>
+            <option value="Aggressive">Aggressive</option>
+            <option value="Respectful">Respectful</option>
+            <option value="Playful">Playful</option>
+            <option value="Sincere">Sincere</option>
+            <option value="Objective">Objective</option>
+        </select>
+        
+        <label for="exemplar">Exemplar:</label>
+        <textarea id="exemplar" name="exemplar" required></textarea>
+        
+        <button type="button" onclick="generatePrompt()">Generate Prompt</button>
+    </form>
+    
+    <div id="output" class="output"></div>
+    
+    <script>
+        // Function to generate the prompt based on the input values
+        function generatePrompt() {
+            // Retrieve input values from the form
+            const task = document.getElementById('task').value;
+            const context = document.getElementById('context').value;
+            const format = document.getElementById('format').value;
+            const persona = document.getElementById('persona').value;
+            const style = document.getElementById('style').value;
+            const tone = document.getElementById('tone').value;
+            const exemplar = document.getElementById('exemplar').value;
+            
+            // Create the prompt string
+            const prompt = `
+                [Task: ${task}]
+                [Context: ${context}]
+                [Format: ${format}]
+                [Persona: ${persona}]
+                [Style: ${style}]
+                [Tone: ${tone}]
+                [Exemplar: ${exemplar}]
+            `;
+            
+            // Display the generated prompt in the output div
+            document.getElementById('output').innerText = prompt;
+        }
+    </script>
+</body>
+</html>
