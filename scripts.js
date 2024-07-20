@@ -1,3 +1,12 @@
+document.addEventListener('DOMContentLoaded', () => {
+    loadTasks();
+    loadPersonas();
+    loadStyles();
+    loadTones();
+    loadDramaticStructures();
+    fetchTemplates();
+});
+
 // Function to load tasks from tasks.json
 async function loadTasks() {
     try {
@@ -81,43 +90,48 @@ async function loadDramaticStructures() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadTasks();
-    loadPersonas();
-    loadStyles();
-    loadTones();
-    loadDramaticStructures();
-});
-
-// Other JavaScript functions
-// Function to clear default text on focus
-function clearDefaultText(element, defaultText) {
-    if (element.value === defaultText) {
-        element.value = '';
-        element.style.color = 'black';
+// Function to fetch templates from template.json
+async function fetchTemplates() {
+    try {
+        const response = await fetch('template.json');
+        const templates = await response.json();
+        populateTemplateList(templates);
+    } catch (error) {
+        console.error('Error fetching templates:', error);
     }
 }
 
-// Function to restore default text on blur if empty
-function restoreDefaultText(element, defaultText) {
-    if (element.value === '') {
-        element.value = defaultText;
-        element.style.color = 'gray';
-    }
+// Function to populate the datalist with template names
+function populateTemplateList(templates) {
+    const datalist = document.getElementById('templates');
+    templates.forEach(template => {
+        const option = document.createElement('option');
+        option.value = template.name;
+        datalist.appendChild(option);
+    });
+
+    // Add event listener for template selection
+    document.getElementById('template').addEventListener('input', (event) => {
+        const selectedTemplate = templates.find(template => template.name === event.target.value);
+        if (selectedTemplate) {
+            applyTemplate(selectedTemplate);
+        }
+    });
 }
 
-// Add event listeners for focus and blur on textareas and input
-document.getElementById('context').addEventListener('focus', function() { clearDefaultText(this, 'Suppose year is 2400 with near galaxy'); });
-document.getElementById('context').addEventListener('blur', function() { restoreDefaultText(this, 'Suppose year is 2400 with near galaxy'); });
+// Function to apply selected template values to the form fields
+function applyTemplate(template) {
+    document.getElementById('task').value = template.task || '';
+    document.getElementById('context').value = template.context || '';
+    document.getElementById('format').value = template.format || '';
+    document.getElementById('persona').value = template.persona || '';
+    document.getElementById('style').value = template.style || '';
+    document.getElementById('tone').value = template.tone || '';
+    document.getElementById('structure').value = template.structure || '';
+    document.getElementById('exemplar').value = template.exemplar || '';
+}
 
-document.getElementById('format').addEventListener('focus', function() { clearDefaultText(this, '3 paragraphs, 300 words, 250 max characters'); });
-document.getElementById('format').addEventListener('blur', function() { restoreDefaultText(this, '3 paragraphs, 300 words, 250 max characters'); });
-
-document.getElementById('persona').addEventListener('focus', function() { clearDefaultText(this, 'Enter the persona here...'); });
-document.getElementById('persona').addEventListener('blur', function() { restoreDefaultText(this, 'Enter the persona here...'); });
-
-document.getElementById('exemplar').addEventListener('focus', function() { clearDefaultText(this, 'Once there was a boy long time ago,'); });
-document.getElementById('exemplar').addEventListener('blur', function() { restoreDefaultText(this, 'Once there was a boy long time ago,'); });
+// Existing functions like generatePrompt, copyToClipboard, resetForm, showModal, closeModal, copyModalToClipboard
 
 // Function to generate the prompt based on the input values
 function generatePrompt() {
@@ -248,34 +262,4 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    fetchTemplates();
-});
-
-async function fetchTemplates() {
-    try {
-        const response = await fetch('template.json');
-        const templates = await response.json();
-        populateTemplateList(templates);
-    } catch (error) {
-        console.error('Error fetching templates:', error);
-    }
-}
-
-function populateTemplateList(templates) {
-    const datalist = document.getElementById('templates');
-    templates.forEach(template => {
-        const option = document.createElement('option');
-        option.value = template.name;
-        datalist.appendChild(option);
-    });
-
-    document.getElementById('template').addEventListener('input', (event) => {
-        const selectedTemplate = templates.find(template => template.name === event.target.value);
-        if (selectedTemplate) {
-            applyTemplate(selectedTemplate);
-        }
-    });
 }
