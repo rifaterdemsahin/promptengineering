@@ -470,5 +470,423 @@
             "Testimonials or social proof"
         ],
         "exemplar": "Landing pages from companies like Unbounce or Leadpages"
+    },
+    {
+        "name": "Beauty Tutorial Template",
+        "task": "Develop a beauty tutorial",
+        "context": "Demonstrating techniques and products for viewers",
+        "format": "Tutorial",
+        "persona": "Beauty influencer or makeup artist",
+        "style": "Visual and instructional",
+        "tone": "Friendly and engaging",
+        "structure": [
+            "Introduction to the beauty topic",
+            "Step-by-step demonstration of techniques",
+            "Product recommendations and usage",
+            "Conclusion with tips and additional resources"
+        ],
+        "exemplar": "Tutorials from YouTube channels like Michelle Phan or NikkieTutorials"
+    },
+    {
+        "name": "Fashion Advice Post Template",
+        "task": "Write a fashion advice post",
+        "context": "Suggesting styles and trends for fashion enthusiasts",
+        "format": "Blog Post",
+        "persona": "Fashion blogger or stylist",
+        "style": "Trendy and informative",
+        "tone": "Inspirational and stylish",
+        "structure": [
+            "Introduction to the fashion topic",
+            "Detailed style and trend suggestions",
+            "Examples and outfit inspirations",
+            "Conclusion with shopping tips or lookbooks"
+        ],
+        "exemplar": "Posts from fashion blogs like The Blonde Salad or Who What Wear"
+    },
+    {
+        "name": "Style Guide Template",
+        "task": "Create a style guide",
+        "context": "Outlining rules and tips for a specific audience",
+        "format": "Guide",
+        "persona": "Fashion consultant or brand stylist",
+        "style": "Structured and detailed",
+        "tone": "Professional and helpful",
+        "structure": [
+            "Introduction to the style topic",
+            "Detailed rules and guidelines",
+            "Examples and visual aids",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Style guides from websites like Vogue or GQ"
+    },
+    {
+        "name": "Home Improvement Guide Template",
+        "task": "Write a home improvement guide",
+        "context": "Providing projects and tips for homeowners",
+        "format": "Guide",
+        "persona": "Home improvement expert or DIY enthusiast",
+        "style": "Practical and detailed",
+        "tone": "Encouraging and informative",
+        "structure": [
+            "Introduction to the home improvement project",
+            "Step-by-step instructions",
+            "Tips and best practices",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Guides from websites like This Old House or Home Depot"
+    },
+    {
+        "name": "Gardening Tips Article Template",
+        "task": "Develop a gardening tips article",
+        "context": "Offering advice and techniques for gardeners",
+        "format": "Article",
+        "persona": "Gardening expert or horticulturist",
+        "style": "Informative and practical",
+        "tone": "Helpful and encouraging",
+        "structure": [
+            "Introduction to the gardening topic",
+            "Detailed tips and techniques",
+            "Examples and case studies",
+            "Conclusion with seasonal advice"
+        ],
+        "exemplar": "Articles from websites like Gardeners.com or Better Homes & Gardens"
+    },
+    {
+        "name": "DIY Project Guide Template",
+        "task": "Write a DIY project guide",
+        "context": "Providing steps and materials for DIY enthusiasts",
+        "format": "Guide",
+        "persona": "DIY expert or craft blogger",
+        "style": "Creative and instructional",
+        "tone": "Encouraging and practical",
+        "structure": [
+            "Introduction to the DIY project",
+            "List of materials and tools",
+            "Step-by-step instructions",
+            "Conclusion with tips and variations"
+        ],
+        "exemplar": "Guides from websites like DIY Network or Instructables"
+    },
+    {
+        "name": "Parenting Advice Post Template",
+        "task": "Create a parenting advice post",
+        "context": "Giving tips and strategies for parents",
+        "format": "Blog Post",
+        "persona": "Parenting expert or family therapist",
+        "style": "Supportive and practical",
+        "tone": "Warm and empathetic",
+        "structure": [
+            "Introduction to the parenting topic",
+            "Detailed tips and strategies",
+            "Examples and case studies",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Posts from parenting blogs like Parenting.com or Scary Mommy"
+    },
+    {
+        "name": "Pet Care Guide Template",
+        "task": "Write a pet care guide",
+        "context": "Discussing care and tips for pet owners",
+        "format": "Guide",
+        "persona": "Veterinarian or pet care expert",
+        "style": "Informative and practical",
+        "tone": "Supportive and friendly",
+        "structure": [
+            "Introduction to pet care",
+            "Detailed care tips and best practices",
+            "Examples and case studies",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Guides from websites like PetMD or The Spruce Pets"
+    },
+    {
+        "name": "Tech Tutorial Template",
+        "task": "Develop a tech tutorial",
+        "context": "Explaining a process and tips for users",
+        "format": "Tutorial",
+        "persona": "Tech expert or software developer",
+        "style": "Technical and instructional",
+        "tone": "Supportive and clear",
+        "structure": [
+            "Introduction to the tech topic",
+            "Step-by-step instructions",
+            "Tips and best practices",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Tutorials from websites like How-To Geek or TechRadar"
+    },
+    {
+        "name": "Software Review Template",
+        "task": "Write a software review",
+        "context": "Covering features, pros, cons, and providing a recommendation for the audience",
+        "format": "Review",
+        "persona": "Tech reviewer or software analyst",
+        "style": "Analytical and detailed",
+        "tone": "Objective and informative",
+        "structure": [
+            "Introduction to the software",
+            "Detailed feature analysis",
+            "Pros and cons",
+            "Overall recommendation",
+            "Conclusion with buying advice"
+        ],
+        "exemplar": "Reviews from websites like CNET or PCMag"
+    },
+    {
+        "name": "App Guide Template",
+        "task": "Create an app guide",
+        "context": "Providing features and usage tips for users",
+        "format": "Guide",
+        "persona": "App expert or tech blogger",
+        "style": "Informative and practical",
+        "tone": "Supportive and clear",
+        "structure": [
+            "Introduction to the app",
+            "Detailed feature analysis",
+            "Usage tips and best practices",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Guides from websites like TechCrunch or The Verge"
+    },
+    {
+        "name": "Gaming Tips Article Template",
+        "task": "Write a gaming tips article",
+        "context": "Offering strategies and tips for gamers",
+        "format": "Article",
+        "persona": "Gamer or gaming expert",
+        "style": "Informative and engaging",
+        "tone": "Exciting and supportive",
+        "structure": [
+            "Introduction to the game",
+            "Detailed strategies and tips",
+            "Examples and case studies",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Articles from websites like IGN or GameSpot"
+    },
+    {
+        "name": "Coding Tutorial Template",
+        "task": "Develop a coding tutorial",
+        "context": "Explaining steps and examples for programmers",
+        "format": "Tutorial",
+        "persona": "Software developer or coding instructor",
+        "style": "Technical and instructional",
+        "tone": "Supportive and clear",
+        "structure": [
+            "Introduction to the coding topic",
+            "Step-by-step instructions",
+            "Examples and code snippets",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Tutorials from websites like Codecademy or FreeCodeCamp"
+    },
+    {
+        "name": "Cybersecurity Guide Template",
+        "task": "Write a cybersecurity guide",
+        "context": "Offering tips and best practices for an audience",
+        "format": "Guide",
+        "persona": "Cybersecurity expert or IT professional",
+        "style": "Informative and practical",
+        "tone": "Supportive and clear",
+        "structure": [
+            "Introduction to cybersecurity",
+            "Detailed tips and best practices",
+            "Examples and case studies",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Guides from websites like Cybersecurity Ventures or Kaspersky"
+    },
+    {
+        "name": "AI and Machine Learning Article Template",
+        "task": "Create an AI and machine learning article",
+        "context": "Discussing concepts and applications for readers",
+        "format": "Article",
+        "persona": "AI researcher or data scientist",
+        "style": "Informative and technical",
+        "tone": "Engaging and educational",
+        "structure": [
+            "Introduction to AI and machine learning",
+            "Detailed explanation of concepts",
+            "Applications and examples",
+            "Conclusion with future outlook"
+        ],
+        "exemplar": "Articles from websites like Towards Data Science or MIT Technology Review"
+    },
+    {
+        "name": "Blockchain and Cryptocurrency Post Template",
+        "task": "Write a blockchain and cryptocurrency post",
+        "context": "Explaining technology and trends for an audience",
+        "format": "Blog Post",
+        "persona": "Blockchain expert or crypto analyst",
+        "style": "Informative and engaging",
+        "tone": "Technical and insightful",
+        "structure": [
+            "Introduction to blockchain and cryptocurrency",
+            "Detailed explanation of technology",
+            "Current trends and analysis",
+            "Conclusion with future predictions"
+        ],
+        "exemplar": "Posts from websites like CoinDesk or CryptoSlate"
+    },
+    {
+        "name": "Investment Guide Template",
+        "task": "Develop an investment guide",
+        "context": "Offering strategies and tips for investors",
+        "format": "Guide",
+        "persona": "Financial advisor or investment expert",
+        "style": "Informative and practical",
+        "tone": "Supportive and professional",
+        "structure": [
+            "Introduction to investing",
+            "Detailed strategies and tips",
+            "Examples and case studies",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Guides from websites like Investopedia or The Motley Fool"
+    },
+    {
+        "name": "Personal Finance Article Template",
+        "task": "Write a personal finance article",
+        "context": "Providing advice and tips for readers",
+        "format": "Article",
+        "persona": "Financial advisor or personal finance blogger",
+        "style": "Informative and practical",
+        "tone": "Supportive and professional",
+        "structure": [
+            "Introduction to the personal finance topic",
+            "Detailed advice and tips",
+            "Examples and case studies",
+            "Conclusion with actionable steps"
+        ],
+        "exemplar": "Articles from websites like NerdWallet or The Balance"
+    },
+    {
+        "name": "Retirement Planning Guide Template",
+        "task": "Create a retirement planning guide",
+        "context": "Discussing strategies and tips for an audience",
+        "format": "Guide",
+        "persona": "Financial planner or retirement expert",
+        "style": "Informative and practical",
+        "tone": "Supportive and professional",
+        "structure": [
+            "Introduction to retirement planning",
+            "Detailed strategies and tips",
+            "Examples and case studies",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Guides from websites like Fidelity or Vanguard"
+    },
+    {
+        "name": "Career Advice Post Template",
+        "task": "Write a career advice post",
+        "context": "Offering tips and guidance for professionals",
+        "format": "Blog Post",
+        "persona": "Career coach or HR professional",
+        "style": "Supportive and practical",
+        "tone": "Encouraging and professional",
+        "structure": [
+            "Introduction to the career topic",
+            "Detailed tips and guidance",
+            "Examples and case studies",
+            "Conclusion with actionable steps"
+        ],
+        "exemplar": "Posts from websites like The Muse or LinkedIn"
+    },
+    {
+        "name": "Job Interview Tips Article Template",
+        "task": "Develop a job interview tips article",
+        "context": "Providing questions and tips for job seekers",
+        "format": "Article",
+        "persona": "Career coach or HR professional",
+        "style": "Supportive and practical",
+        "tone": "Encouraging and professional",
+        "structure": [
+            "Introduction to the importance of job interviews",
+            "Common questions and how to answer them",
+            "Tips for successful interviews",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Articles from websites like Glassdoor or Indeed"
+    },
+    {
+        "name": "Resume Writing Guide Template",
+        "task": "Write a resume writing guide",
+        "context": "Offering tips and templates for job seekers",
+        "format": "Guide",
+        "persona": "Career coach or HR professional",
+        "style": "Supportive and practical",
+        "tone": "Professional and clear",
+        "structure": [
+            "Introduction to the importance of a good resume",
+            "Detailed tips for writing a resume",
+            "Templates and examples",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Guides from websites like Resume Genius or Zety"
+    },
+    {
+        "name": "Cover Letter Template",
+        "task": "Create a cover letter template",
+        "context": "Providing structure and examples for job seekers",
+        "format": "Template",
+        "persona": "Career coach or HR professional",
+        "style": "Supportive and practical",
+        "tone": "Professional and clear",
+        "structure": [
+            "Introduction to the importance of a cover letter",
+            "Structure and key elements of a cover letter",
+            "Examples and templates",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Templates from websites like MyPerfectCoverLetter or Novoresume"
+    },
+    {
+        "name": "Job Search Strategy Article Template",
+        "task": "Write a job search strategy article",
+        "context": "Offering tips and resources for job seekers",
+        "format": "Article",
+        "persona": "Career coach or HR professional",
+        "style": "Supportive and practical",
+        "tone": "Encouraging and professional",
+        "structure": [
+            "Introduction to the importance of a job search strategy",
+            "Detailed tips and strategies",
+            "Examples and case studies",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Articles from websites like LinkedIn or The Muse"
+    },
+    {
+        "name": "Networking Tips Post Template",
+        "task": "Develop a networking tips post",
+        "context": "Providing advice and strategies for professionals",
+        "format": "Blog Post",
+        "persona": "Career coach or business professional",
+        "style": "Supportive and practical",
+        "tone": "Encouraging and professional",
+        "structure": [
+            "Introduction to the importance of networking",
+            "Detailed tips and strategies",
+            "Examples and success stories",
+            "Conclusion with actionable steps"
+        ],
+        "exemplar": "Posts from websites like LinkedIn or Forbes"
+    },
+    {
+        "name": "Team Management Guide Template",
+        "task": "Write a team management guide",
+        "context": "Offering tips and best practices for managers",
+        "format": "Guide",
+        "persona": "Leadership coach or business consultant",
+        "style": "Informative and practical",
+        "tone": "Professional and supportive",
+        "structure": [
+            "Introduction to team management",
+            "Detailed tips and best practices",
+            "Examples and case studies",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Guides from websites like Harvard Business Review or Gallup"
     }
 ]
+
