@@ -150,7 +150,7 @@ function generatePrompt() {
     }
     
     if (closeEnded) {
-        prompt += "\n\n[Close-ended question:]\nIs the prompt clear and achievable?";
+        prompt += "\n\n[Close-ended question:]\nIs the prompt clear and achievable? (Yes/No)";
     }
 
     // Display the generated prompt in the output textarea
