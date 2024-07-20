@@ -10,6 +10,10 @@
 <body>
     <h1>Prompter Helper App</h1>
     <form id="prompterForm">
+        <label for="template">Template:</label>
+        <input list="templates" id="template" name="template">
+        <datalist id="templates"></datalist>
+        
         <label for="task">Task:</label>
         <input list="tasks" id="task" name="task" required>
         <datalist id="tasks"></datalist>
