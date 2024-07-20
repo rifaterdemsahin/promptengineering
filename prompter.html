@@ -242,7 +242,7 @@
         <label for="exemplar">Exemplar:</label>
         <textarea id="exemplar" name="exemplar" required>Once there was a boy long time ago,</textarea>
         
-        <label><input type="checkbox" id="addQuestions" name="addQuestions"> Add 5 questions to make the prompt better</label>
+        <label><input type="checkbox" id="addQuestions" name="addQuestions" checked> Add 5 questions to make the prompt better</label>
         
         <button type="button" onclick="generatePrompt()">Generate Prompt</button>
         <button type="button" onclick="copyToClipboard()">Copy to Clipboard</button>
@@ -345,7 +345,7 @@
             document.getElementById('tone').value = 'Formal';
             document.getElementById('structure').value = "Hero's Journey";
             document.getElementById('exemplar').value = 'Once there was a boy long time ago,';
-            document.getElementById('addQuestions').checked = false;
+            document.getElementById('addQuestions').checked = true;
             
             // Reset text color
             document.getElementById('context').style.color = 'gray';
