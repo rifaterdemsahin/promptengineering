@@ -5,7 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prompter Helper App</title>
     <style>
-        /* Your CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #0086D4;
+            text-align: center;
+        }
+        form {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: auto;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input, textarea, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        input:focus, textarea:focus, select:focus {
+            border-color: #0086D4;
+            outline: none;
+        }
+        button {
+            background-color: #0086D4;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005fa3;
+        }
+        .output {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 8px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover, .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -23,24 +102,16 @@
         
         <label for="persona">Persona:</label>
         <input list="personas" id="persona" name="persona" required>
-        <datalist id="personas">
-            <!-- Your options for personas -->
-        </datalist>
+        <datalist id="personas"></datalist>
         
         <label for="style">Style:</label>
-        <select id="style" name="style" required>
-            <!-- Your options for styles -->
-        </select>
+        <select id="style" name="style" required></select>
         
         <label for="tone">Tone:</label>
-        <select id="tone" name="tone" required>
-            <!-- Your options for tones -->
-        </select>
+        <select id="tone" name="tone" required></select>
         
         <label for="structure">Dramatic Structure:</label>
-        <select id="structure" name="structure" required>
-            <!-- Your options for structures -->
-        </select>
+        <select id="structure" name="structure" required></select>
         
         <label for="exemplar">Exemplar:</label>
         <textarea id="exemplar" name="exemplar" required>Once there was a boy long time ago,</textarea>
@@ -80,8 +151,81 @@
                 console.error('Error loading tasks:', error);
             }
         }
-        
-        document.addEventListener('DOMContentLoaded', loadTasks);
+
+        // Function to load personas from persona.json
+        async function loadPersonas() {
+            try {
+                const response = await fetch('persona.json');
+                const personas = await response.json();
+                const datalist = document.getElementById('personas');
+                personas.forEach(persona => {
+                    const option = document.createElement('option');
+                    option.value = persona;
+                    datalist.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error loading personas:', error);
+            }
+        }
+
+        // Function to load styles from styles.json
+        async function loadStyles() {
+            try {
+                const response = await fetch('styles.json');
+                const styles = await response.json();
+                const select = document.getElementById('style');
+                styles.forEach(style => {
+                    const option = document.createElement('option');
+                    option.value = style;
+                    option.textContent = style;
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error loading styles:', error);
+            }
+        }
+
+        // Function to load tones from tones.json
+        async function loadTones() {
+            try {
+                const response = await fetch('tones.json');
+                const tones = await response.json();
+                const select = document.getElementById('tone');
+                tones.forEach(tone => {
+                    const option = document.createElement('option');
+                    option.value = tone;
+                    option.textContent = tone;
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error loading tones:', error);
+            }
+        }
+
+        // Function to load dramatic structures from dramatic.json
+        async function loadDramaticStructures() {
+            try {
+                const response = await fetch('dramatic.json');
+                const structures = await response.json();
+                const select = document.getElementById('structure');
+                structures.forEach(structure => {
+                    const option = document.createElement('option');
+                    option.value = structure;
+                    option.textContent = structure;
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error loading dramatic structures:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTasks();
+            loadPersonas();
+            loadStyles();
+            loadTones();
+            loadDramaticStructures();
+        });
 
         // Other JavaScript functions
         // Function to clear default text on focus
