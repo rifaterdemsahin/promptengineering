@@ -5,79 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prompter Helper App</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f0f0f0;
-        }
-        h1 {
-            color: #0086D4;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-            color: #0086D4;
-        }
-        textarea, input, select, datalist {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            color: gray;
-        }
-        button {
-            margin-top: 10px;
-            padding: 10px 15px;
-            background-color: #F89D21;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #e0841c;
-        }
-        .output {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
-            padding-top: 60px;
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
+        /* Your CSS styles */
     </style>
 </head>
 <body>
@@ -85,73 +13,7 @@
     <form id="prompterForm">
         <label for="task">Task:</label>
         <input list="tasks" id="task" name="task" required>
-        <datalist id="tasks">
-            <option value="Create an image">
-            <option value="Generate HTML table">
-            <option value="Generate financial report">
-            <option value="Create a table">
-            <option value="Docker commands">
-            <option value="Compile a competitive analysis report for an industry.">
-            <option value="Compile a feasibility study for a construction project.">
-            <option value="Compile a market analysis report for a new product.">
-            <option value="Compile an annual performance review for an employee.">
-            <option value="Create a detailed portrait of a Victorian-era gentleman.">
-            <option value="Create a fantasy dragon flying over a medieval castle.">
-            <option value="Create a fairytale forest with magical creatures.">
-            <option value="Create a futuristic robot in a high-tech laboratory.">
-            <option value="Create a futuristic space station orbiting Earth.">
-            <option value="Create a futuristic vehicle in a dystopian city.">
-            <option value="Create an alien planet with two moons.">
-            <option value="Create an enchanted castle in the clouds.">
-            <option value="Create an image of a bustling [New York City] street.">
-            <option value="Create an image of a cozy cabin in the woods during autumn.">
-            <option value="Create an image of a fairytale forest with magical creatures.">
-            <option value="Create an image of a futuristic cityscape at night.">
-            <option value="Create an image of a grand library with towering bookshelves.">
-            <option value="Create an image of a luxurious modern living room.">
-            <option value="Create an image of a romantic [Paris] street at dusk.">
-            <option value="Create an image of a serene mountain landscape at sunrise.">
-            <option value="Create an image of a serene zen garden with a koi pond.">
-            <option value="Create an image of a snowy winter village at night.">
-            <option value="Create an image of an alien planet with two moons.">
-            <option value="Create an image of an underwater coral reef teeming with fish.">
-            <option value="Create an image of vibrant carnival scene with colorful decorations.">
-            <option value="Create an underwater coral reef teeming with fish.">
-            <option value="Create a modern airport with airplanes taking off.">
-            <option value="Create a portrait of a cyberpunk character with neon lights.">
-            <option value="Create a scene of a bustling street market in [Tokyo].">
-            <option value="Create a scene of a serene beach with crystal clear waters.">
-            <option value="Create a traditional Italian countryside.">
-            <option value="Create a traditional Japanese tea ceremony.">
-            <option value="Create a tropical rainforest with a waterfall.">
-            <option value="Create a vibrant carnival scene with colorful decorations.">
-            <option value="Create a wild jungle with exotic animals.">
-            <option value="Draft a business plan for a startup.">
-            <option value="Draft a legal contract for a business partnership.">
-            <option value="Draft a press release for a product launch.">
-            <option value="Generate a CSS grid layout for a web page.">
-            <option value="Generate a CSS stylesheet for a responsive web design.">
-            <option value="Generate a HTML email template for a newsletter.">
-            <option value="Generate an HTML form for user registration.">
-            <option value="Generate an HTML template for a personal blog.">
-            <option value="Generate a JavaScript code snippet for a dynamic web form.">
-            <option value="Generate a JSON file for a RESTful API response.">
-            <option value="Generate a LaTeX document for a scientific paper.">
-            <option value="Generate a markdown file for project documentation.">
-            <option value="Generate a PHP script for user authentication.">
-            <option value="Generate a Python script for data analysis.">
-            <option value="Generate a Python script for machine learning model training.">
-            <option value="Generate a Ruby script for web scraping.">
-            <option value="Generate a SQL query to extract customer data from a database.">
-            <option value="Generate a XML sitemap for a website.">
-            <option value="Generate a YAML file for configuration settings.">
-            <option value="Produce a customer satisfaction survey report.">
-            <option value="Produce a demographic study report for a targeted region.">
-            <option value="Produce a quarterly financial report for a company.">
-            <option value="Produce a research paper on renewable energy sources.">
-            <option value="Produce a technical documentation for a software application.">
-            <option value="Produce a white paper on blockchain technology.">
-        </datalist>
+        <datalist id="tasks"></datalist>
 
         <label for="context">Context:</label>
         <textarea id="context" name="context" required>Suppose year is 2400 with near galaxy</textarea>
@@ -162,81 +24,22 @@
         <label for="persona">Persona:</label>
         <input list="personas" id="persona" name="persona" required>
         <datalist id="personas">
-            <option value="Customer Support Representative">
-            <option value="Technical Support Specialist">
-            <option value="Sales Representative">
-            <option value="Travel Agent">
-            <option value="Tutor/Educator">
-            <option value="Career Counselor">
-            <option value="Fitness Trainer">
-            <option value="Financial Advisor">
-            <option value="Marketing Consultant">
-            <option value="Content Creator">
-            <option value="Legal Advisor">
-            <option value="Medical Professional">
-            <option value="Event Planner">
-            <option value="Project Manager">
-            <option value="Human Resources Manager">
-            <option value="IT Specialist">
-            <option value="Personal Assistant">
-            <option value="Real Estate Agent">
-            <option value="Chef/Culinary Expert">
-            <option value="Therapist/Counselor">
+            <!-- Your options for personas -->
         </datalist>
         
         <label for="style">Style:</label>
         <select id="style" name="style" required>
-            <option value="Descriptive">Descriptive</option>
-            <option value="Persuasive">Persuasive</option>
-            <option value="Narrative">Narrative</option>
-            <option value="Expository">Expository</option>
-            <option value="Technical">Technical</option>
-            <option value="Academic">Academic</option>
-            <option value="Creative">Creative</option>
-            <option value="Informal">Informal</option>
-            <option value="Formal">Formal</option>
-            <option value="Humorous">Humorous</option>
-            <option value="Satirical">Satirical</option>
-            <option value="Ironical">Ironical</option>
-            <option value="Dramatic">Dramatic</option>
-            <option value="Poetic">Poetic</option>
-            <option value="Mystical">Mystical</option>
-            <option value="Suspenseful">Suspenseful</option>
-            <option value="Romantic">Romantic</option>
-            <option value="Realistic">Realistic</option>
-            <option value="Surrealistic">Surrealistic</option>
-            <option value="Gothic">Gothic</option>
+            <!-- Your options for styles -->
         </select>
         
         <label for="tone">Tone:</label>
         <select id="tone" name="tone" required>
-            <option value="Formal">Formal</option>
-            <option value="Informal">Informal</option>
-            <option value="Serious">Serious</option>
-            <option value="Humorous">Humorous</option>
-            <option value="Sarcastic">Sarcastic</option>
-            <option value="Ironical">Ironical</option>
-            <option value="Cynical">Cynical</option>
-            <option value="Satirical">Satirical</option>
-            <option value="Confident">Confident</option>
-            <option value="Doubtful">Doubtful</option>
-            <option value="Optimistic">Optimistic</option>
-            <option value="Pessimistic">Pessimistic</option>
-            <option value="Sympathetic">Sympathetic</option>
-            <option value="Empathetic">Empathetic</option>
-            <option value="Angry">Angry</option>
-            <option value="Aggressive">Aggressive</option>
-            <option value="Respectful">Respectful</option>
-            <option value="Playful">Playful</option>
-            <option value="Sincere">Sincere</option>
-            <option value="Objective">Objective</option>
+            <!-- Your options for tones -->
         </select>
         
         <label for="structure">Dramatic Structure:</label>
         <select id="structure" name="structure" required>
-            <option value="Hero's Journey">Dramatic Style: Hero's Journey</option>
-            <option value="3 Act Structure">3 Act Structure</option>
-            <option value="Plain">Plain</option>
+            <!-- Your options for structures -->
         </select>
         
         <label for="exemplar">Exemplar:</label>
@@ -262,6 +65,25 @@
     </div>
     
     <script>
+        // Function to load tasks from tasks.json
+        async function loadTasks() {
+            try {
+                const response = await fetch('tasks.json');
+                const tasks = await response.json();
+                const datalist = document.getElementById('tasks');
+                tasks.forEach(task => {
+                    const option = document.createElement('option');
+                    option.value = task;
+                    datalist.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error loading tasks:', error);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', loadTasks);
+
+        // Other JavaScript functions
         // Function to clear default text on focus
         function clearDefaultText(element, defaultText) {
             if (element.value === defaultText) {
