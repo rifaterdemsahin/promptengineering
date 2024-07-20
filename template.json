@@ -1,5 +1,181 @@
 [
     {
+        "name": "Organizational Skills Article Template",
+        "task": "Write an organizational skills article",
+        "context": "Providing tips and techniques for a specific audience",
+        "format": "Article",
+        "persona": "Productivity expert or life coach",
+        "style": "Informative and practical",
+        "tone": "Encouraging and helpful",
+        "structure": [
+            "Introduction to the importance of organizational skills",
+            "Detailed tips and techniques",
+            "Real-life examples or case studies",
+            "Conclusion with actionable advice"
+        ],
+        "exemplar": "Articles from websites like Lifehacker or Forbes"
+    },
+    {
+        "name": "Remote Work Guide Template",
+        "task": "Create a remote work guide",
+        "context": "Discussing tools and best practices for remote workers",
+        "format": "Guide",
+        "persona": "Remote work consultant or HR professional",
+        "style": "Comprehensive and instructional",
+        "tone": "Supportive and informative",
+        "structure": [
+            "Introduction to remote work",
+            "Essential tools and technologies",
+            "Best practices for productivity and communication",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Guides from platforms like Buffer or Remote.co"
+    },
+    {
+        "name": "Workplace Wellness Article Template",
+        "task": "Write a workplace wellness article",
+        "context": "Providing tips and programs for employees",
+        "format": "Article",
+        "persona": "Wellness coach or HR manager",
+        "style": "Encouraging and informative",
+        "tone": "Supportive and motivational",
+        "structure": [
+            "Introduction to workplace wellness",
+            "Detailed tips and wellness programs",
+            "Case studies or success stories",
+            "Conclusion with actionable steps"
+        ],
+        "exemplar": "Articles from websites like Mindful or Verywell Mind"
+    },
+    {
+        "name": "Office Design Tips Post Template",
+        "task": "Develop an office design tips post",
+        "context": "Offering advice and examples for companies",
+        "format": "Blog Post",
+        "persona": "Interior designer or office manager",
+        "style": "Visual and practical",
+        "tone": "Inspirational and informative",
+        "structure": [
+            "Introduction to the importance of office design",
+            "Detailed design tips and techniques",
+            "Examples and case studies",
+            "Conclusion with additional resources"
+        ],
+        "exemplar": "Posts from websites like Office Snapshots or Architectural Digest"
+    },
+    {
+        "name": "Customer Service Guide Template",
+        "task": "Write a customer service guide",
+        "context": "Providing tips and strategies for businesses",
+        "format": "Guide",
+        "persona": "Customer service expert or business consultant",
+        "style": "Comprehensive and practical",
+        "tone": "Supportive and informative",
+        "structure": [
+            "Introduction to customer service importance",
+            "Detailed tips and strategies",
+            "Examples and case studies",
+            "Conclusion with actionable steps"
+        ],
+        "exemplar": "Guides from websites like HubSpot or Zendesk"
+    },
+    {
+        "name": "Sales Strategy Article Template",
+        "task": "Create a sales strategy article",
+        "context": "Discussing techniques and tips for sales professionals",
+        "format": "Article",
+        "persona": "Sales expert or business consultant",
+        "style": "Persuasive and practical",
+        "tone": "Motivational and informative",
+        "structure": [
+            "Introduction to sales strategy importance",
+            "Detailed techniques and tips",
+            "Examples and case studies",
+            "Conclusion with actionable steps"
+        ],
+        "exemplar": "Articles from websites like Sales Hacker or Salesforce"
+    },
+    {
+        "name": "Marketing Plan Template",
+        "task": "Write a marketing plan",
+        "context": "Outlining strategies and tactics for marketers",
+        "format": "Plan",
+        "persona": "Marketing strategist or business consultant",
+        "style": "Comprehensive and structured",
+        "tone": "Professional and informative",
+        "structure": [
+            "Introduction to the marketing plan",
+            "Detailed strategies and tactics",
+            "Examples and case studies",
+            "Conclusion with actionable steps"
+        ],
+        "exemplar": "Marketing plans from websites like HubSpot or MarketingProfs"
+    },
+    {
+        "name": "Branding Guide Template",
+        "task": "Develop a branding guide",
+        "context": "Providing steps and tips for businesses",
+        "format": "Guide",
+        "persona": "Brand strategist or business consultant",
+        "style": "Comprehensive and practical",
+        "tone": "Inspirational and informative",
+        "structure": [
+            "Introduction to branding importance",
+            "Detailed steps and tips",
+            "Examples and case studies",
+            "Conclusion with actionable steps"
+        ],
+        "exemplar": "Branding guides from websites like Canva or 99designs"
+    },
+    {
+        "name": "SEO Tips Post Template",
+        "task": "Write an SEO tips post",
+        "context": "Offering strategies and best practices for webmasters",
+        "format": "Blog Post",
+        "persona": "SEO expert or digital marketer",
+        "style": "Informative and practical",
+        "tone": "Professional and helpful",
+        "structure": [
+            "Introduction to SEO importance",
+            "Detailed strategies and tips",
+            "Examples and case studies",
+            "Conclusion with actionable steps"
+        ],
+        "exemplar": "Posts from websites like Moz or Neil Patel"
+    },
+    {
+        "name": "Content Marketing Guide Template",
+        "task": "Create a content marketing guide",
+        "context": "Discussing strategies and tips for marketers",
+        "format": "Guide",
+        "persona": "Content marketing expert or digital marketer",
+        "style": "Comprehensive and practical",
+        "tone": "Informative and engaging",
+        "structure": [
+            "Introduction to content marketing",
+            "Detailed strategies and tips",
+            "Examples and case studies",
+            "Conclusion with actionable steps"
+        ],
+        "exemplar": "Guides from websites like Content Marketing Institute or HubSpot"
+    },
+    {
+        "name": "Social Media Strategy Article Template",
+        "task": "Write a social media strategy article",
+        "context": "Offering tips and best practices for marketers",
+        "format": "Article",
+        "persona": "Social media expert or digital marketer",
+        "style": "Informative and practical",
+        "tone": "Engaging and professional",
+        "structure": [
+            "Introduction to social media strategy importance",
+            "Detailed tips and best practices",
+            "Examples and case studies",
+            "Conclusion with actionable steps"
+        ],
+        "exemplar": "Articles from websites like Buffer or Sprout Social"
+    },
+    {
         "name": "Blog Post Template",
         "task": "Write a blog post",
         "context": "Covering a specific topic targeting a defined audience and covering key points",
