@@ -1,0 +1,23 @@
+raw prompts to be converted to templates
+
+-------------------------------
+```
+Create a web page using JavaScript to display concepts in draggable bubbles. The concepts are:
+
+Aspect       | GPT Models                              | LLaMA Models
+------------ | --------------------------------------- | ---------------------------
+Size         | GPT-3: 175 billion parameters           | Variable, designed to be competitive
+             | GPT-4: Larger than GPT-3                |
+Performance  | High performance in various NLP tasks   | Competitive with other large models
+             | GPT-4 shows improvements over GPT-3     | Efficient and effective in language tasks
+Cost         | High development and training costs     | High development and training costs
+             | Subscription-based API pricing          | Potentially competitive pricing
+             |                                         | Possible open access for research
+
+Requirements:
+1. Each concept should be in its own bubble.
+2. Connect related bubbles with lines.
+3. Use different colors for GPT (e.g., green) and LLaMA (e.g., blue) bubbles.
+4. Make the bubbles draggable, and ensure connections dynamically update as bubbles are moved.
+```
+-------------------------------
