@@ -121,6 +121,7 @@ document.getElementById('exemplar').addEventListener('blur', function() { restor
 
 // Function to generate the prompt based on the input values
 function generatePrompt() {
+    const template = document.getElementById('template').value;
     // Retrieve input values from the form
     const task = document.getElementById('task').value;
     const context = document.getElementById('context').value;
@@ -135,6 +136,7 @@ function generatePrompt() {
     
     // Create the prompt string
     let prompt = `
+        [Template: ${template}]
         [Task: ${task}]
         [Context: ${context}]
         [Format: ${format}]
@@ -246,4 +248,34 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetchTemplates();
+});
+
+async function fetchTemplates() {
+    try {
+        const response = await fetch('template.json');
+        const templates = await response.json();
+        populateTemplateList(templates);
+    } catch (error) {
+        console.error('Error fetching templates:', error);
+    }
+}
+
+function populateTemplateList(templates) {
+    const datalist = document.getElementById('templates');
+    templates.forEach(template => {
+        const option = document.createElement('option');
+        option.value = template.name;
+        datalist.appendChild(option);
+    });
+
+    document.getElementById('template').addEventListener('input', (event) => {
+        const selectedTemplate = templates.find(template => template.name === event.target.value);
+        if (selectedTemplate) {
+            applyTemplate(selectedTemplate);
+        }
+    });
 }
