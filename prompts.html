@@ -52,8 +52,75 @@
     <h1>Prompter Helper App</h1>
     <form id="prompterForm">
         <label for="task">Task:</label>
-        <textarea id="task" name="task" required>Create an image, generate HTML table</textarea>
-        
+        <input list="tasks" id="task" name="task" required>
+        <datalist id="tasks">
+            <option value="Create an image">
+            <option value="Generate HTML table">
+            <option value="Generate financial report">
+            <option value="Create a table">
+            <option value="Docker commands">
+            <option value="Compile a competitive analysis report for an industry.">
+            <option value="Compile a feasibility study for a construction project.">
+            <option value="Compile a market analysis report for a new product.">
+            <option value="Compile an annual performance review for an employee.">
+            <option value="Create a detailed portrait of a Victorian-era gentleman.">
+            <option value="Create a fantasy dragon flying over a medieval castle.">
+            <option value="Create a fairytale forest with magical creatures.">
+            <option value="Create a futuristic robot in a high-tech laboratory.">
+            <option value="Create a futuristic space station orbiting Earth.">
+            <option value="Create a futuristic vehicle in a dystopian city.">
+            <option value="Create an alien planet with two moons.">
+            <option value="Create an enchanted castle in the clouds.">
+            <option value="Create an image of a bustling New York City street.">
+            <option value="Create an image of a cozy cabin in the woods during autumn.">
+            <option value="Create an image of a fairytale forest with magical creatures.">
+            <option value="Create an image of a futuristic cityscape at night.">
+            <option value="Create an image of a grand library with towering bookshelves.">
+            <option value="Create an image of a luxurious modern living room.">
+            <option value="Create an image of a romantic Paris street at dusk.">
+            <option value="Create an image of a serene mountain landscape at sunrise.">
+            <option value="Create an image of a serene zen garden with a koi pond.">
+            <option value="Create an image of a snowy winter village at night.">
+            <option value="Create an image of an alien planet with two moons.">
+            <option value="Create an image of an underwater coral reef teeming with fish.">
+            <option value="Create an image of vibrant carnival scene with colorful decorations.">
+            <option value="Create an underwater coral reef teeming with fish.">
+            <option value="Create a modern airport with airplanes taking off.">
+            <option value="Create a portrait of a cyberpunk character with neon lights.">
+            <option value="Create a scene of a bustling street market in Tokyo.">
+            <option value="Create a scene of a serene beach with crystal clear waters.">
+            <option value="Create a traditional Italian countryside.">
+            <option value="Create a traditional Japanese tea ceremony.">
+            <option value="Create a tropical rainforest with a waterfall.">
+            <option value="Create a vibrant carnival scene with colorful decorations.">
+            <option value="Create a wild jungle with exotic animals.">
+            <option value="Draft a business plan for a startup.">
+            <option value="Draft a legal contract for a business partnership.">
+            <option value="Draft a press release for a product launch.">
+            <option value="Generate a CSS grid layout for a web page.">
+            <option value="Generate a CSS stylesheet for a responsive web design.">
+            <option value="Generate a HTML email template for a newsletter.">
+            <option value="Generate an HTML form for user registration.">
+            <option value="Generate an HTML template for a personal blog.">
+            <option value="Generate a JavaScript code snippet for a dynamic web form.">
+            <option value="Generate a JSON file for a RESTful API response.">
+            <option value="Generate a LaTeX document for a scientific paper.">
+            <option value="Generate a markdown file for project documentation.">
+            <option value="Generate a PHP script for user authentication.">
+            <option value="Generate a Python script for data analysis.">
+            <option value="Generate a Python script for machine learning model training.">
+            <option value="Generate a Ruby script for web scraping.">
+            <option value="Generate a SQL query to extract customer data from a database.">
+            <option value="Generate a XML sitemap for a website.">
+            <option value="Generate a YAML file for configuration settings.">
+            <option value="Produce a customer satisfaction survey report.">
+            <option value="Produce a demographic study report for a targeted region.">
+            <option value="Produce a quarterly financial report for a company.">
+            <option value="Produce a research paper on renewable energy sources.">
+            <option value="Produce a technical documentation for a software application.">
+            <option value="Produce a white paper on blockchain technology.">
+        </datalist>
+
         <label for="context">Context:</label>
         <textarea id="context" name="context" required>Suppose year is 2400 with near galaxy</textarea>
         
@@ -144,10 +211,7 @@
             }
         }
         
-        // Add event listeners for focus and blur on inputs and textareas
-        document.getElementById('task').addEventListener('focus', function() { clearDefaultText(this, 'Create an image, generate HTML table'); });
-        document.getElementById('task').addEventListener('blur', function() { restoreDefaultText(this, 'Create an image, generate HTML table'); });
-        
+        // Add event listeners for focus and blur on textareas and input
         document.getElementById('context').addEventListener('focus', function() { clearDefaultText(this, 'Suppose year is 2400 with near galaxy'); });
         document.getElementById('context').addEventListener('blur', function() { restoreDefaultText(this, 'Suppose year is 2400 with near galaxy'); });
         
@@ -201,7 +265,7 @@
 
         // Function to reset the form to default values
         function resetForm() {
-            document.getElementById('task').value = 'Create an image, generate HTML table';
+            document.getElementById('task').value = 'Create an image';
             document.getElementById('context').value = 'Suppose year is 2400 with near galaxy';
             document.getElementById('format').value = '3 paragraphs, 300 words, 250 max characters';
             document.getElementById('persona').value = 'Enter the persona here...';
@@ -211,7 +275,6 @@
             document.getElementById('exemplar').value = 'Once there was a boy long time ago,';
             
             // Reset text color
-            document.getElementById('task').style.color = 'gray';
             document.getElementById('context').style.color = 'gray';
             document.getElementById('format').style.color = 'gray';
             document.getElementById('persona').style.color = 'gray';
