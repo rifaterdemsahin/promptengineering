@@ -117,6 +117,7 @@
         <textarea id="exemplar" name="exemplar" required>Once there was a boy long time ago,</textarea>
         
         <label><input type="checkbox" id="addQuestions" name="addQuestions" checked> Add 5 questions to make the prompt better</label>
+        <label><input type="checkbox" id="closeEnded" name="closeEnded"> Add a close-ended question</label>
         
         <button type="button" onclick="generatePrompt()">Generate Prompt</button>
         <button type="button" onclick="copyToClipboard()">Copy to Clipboard</button>
@@ -269,6 +270,7 @@
             const structure = document.getElementById('structure').value;
             const exemplar = document.getElementById('exemplar').value;
             const addQuestions = document.getElementById('addQuestions').checked;
+            const closeEnded = document.getElementById('closeEnded').checked;
             
             // Create the prompt string
             let prompt = `
@@ -286,6 +288,10 @@
                 prompt += "\n\n[Questions to improve the prompt:]\n1. What is the main objective?\n2. Who is the target audience?\n3. What is the desired outcome?\n4. Are there any constraints?\n5. What is the deadline?";
             }
             
+            if (closeEnded) {
+                prompt += "\n\n[Close-ended question:]\nIs the prompt clear and achievable?";
+            }
+
             // Display the generated prompt in the output textarea
             document.getElementById('output').value = prompt;
         }
@@ -312,6 +318,7 @@
             document.getElementById('structure').value = "Hero's Journey";
             document.getElementById('exemplar').value = 'Once there was a boy long time ago,';
             document.getElementById('addQuestions').checked = true;
+            document.getElementById('closeEnded').checked = false;
             
             // Reset text color
             document.getElementById('context').style.color = 'gray';
