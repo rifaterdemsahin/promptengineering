@@ -194,10 +194,19 @@ function resetForm() {
 // Function to show the modal
 function showModal() {
     const modal = document.getElementById('myModal');
-    const modalOutput = document.getElementById('modalOutput');
+    const modalOutputContainer = document.getElementById('modalOutputContainer');
     const outputDiv = document.getElementById('output');
     
-    modalOutput.value = outputDiv.value;
+    modalOutputContainer.innerHTML = '';
+    const lines = outputDiv.value.split('\n');
+    lines.forEach((line, index) => {
+        const lineElement = document.createElement('div');
+        lineElement.textContent = line;
+        lineElement.className = 'modal-line';
+        lineElement.onclick = () => removeLine(index);
+        modalOutputContainer.appendChild(lineElement);
+    });
+    
     modal.style.display = "block";
 }
 
@@ -207,12 +216,26 @@ function closeModal() {
     modal.style.display = "none";
 }
 
+// Function to remove a line from the modal output
+function removeLine(index) {
+    const modalOutputContainer = document.getElementById('modalOutputContainer');
+    const lines = modalOutputContainer.children;
+    lines[index].style.display = 'none';
+}
+
 // Function to save changes from the modal
 function saveChanges() {
-    const modalOutput = document.getElementById('modalOutput');
+    const modalOutputContainer = document.getElementById('modalOutputContainer');
     const outputDiv = document.getElementById('output');
     
-    outputDiv.value = modalOutput.value;
+    const newLines = [];
+    for (const lineElement of modalOutputContainer.children) {
+        if (lineElement.style.display !== 'none') {
+            newLines.push(lineElement.textContent);
+        }
+    }
+    
+    outputDiv.value = newLines.join('\n');
     closeModal();
 }
 
