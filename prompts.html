@@ -18,7 +18,7 @@
             margin-top: 10px;
             color: #0086D4;
         }
-        textarea, input, select {
+        textarea, input, select, datalist {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
@@ -46,6 +46,38 @@
             background-color: #f9f9f9;
             color: #333;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -71,13 +103,13 @@
             <option value="Create a futuristic vehicle in a dystopian city.">
             <option value="Create an alien planet with two moons.">
             <option value="Create an enchanted castle in the clouds.">
-            <option value="Create an image of a bustling New York City street.">
+            <option value="Create an image of a bustling [New York City] street.">
             <option value="Create an image of a cozy cabin in the woods during autumn.">
             <option value="Create an image of a fairytale forest with magical creatures.">
             <option value="Create an image of a futuristic cityscape at night.">
             <option value="Create an image of a grand library with towering bookshelves.">
             <option value="Create an image of a luxurious modern living room.">
-            <option value="Create an image of a romantic Paris street at dusk.">
+            <option value="Create an image of a romantic [Paris] street at dusk.">
             <option value="Create an image of a serene mountain landscape at sunrise.">
             <option value="Create an image of a serene zen garden with a koi pond.">
             <option value="Create an image of a snowy winter village at night.">
@@ -87,7 +119,7 @@
             <option value="Create an underwater coral reef teeming with fish.">
             <option value="Create a modern airport with airplanes taking off.">
             <option value="Create a portrait of a cyberpunk character with neon lights.">
-            <option value="Create a scene of a bustling street market in Tokyo.">
+            <option value="Create a scene of a bustling street market in [Tokyo].">
             <option value="Create a scene of a serene beach with crystal clear waters.">
             <option value="Create a traditional Italian countryside.">
             <option value="Create a traditional Japanese tea ceremony.">
@@ -128,7 +160,29 @@
         <input type="text" id="format" name="format" required value="3 paragraphs, 300 words, 250 max characters">
         
         <label for="persona">Persona:</label>
-        <input type="text" id="persona" name="persona" required value="Enter the persona here...">
+        <input list="personas" id="persona" name="persona" required>
+        <datalist id="personas">
+            <option value="Customer Support Representative">
+            <option value="Technical Support Specialist">
+            <option value="Sales Representative">
+            <option value="Travel Agent">
+            <option value="Tutor/Educator">
+            <option value="Career Counselor">
+            <option value="Fitness Trainer">
+            <option value="Financial Advisor">
+            <option value="Marketing Consultant">
+            <option value="Content Creator">
+            <option value="Legal Advisor">
+            <option value="Medical Professional">
+            <option value="Event Planner">
+            <option value="Project Manager">
+            <option value="Human Resources Manager">
+            <option value="IT Specialist">
+            <option value="Personal Assistant">
+            <option value="Real Estate Agent">
+            <option value="Chef/Culinary Expert">
+            <option value="Therapist/Counselor">
+        </datalist>
         
         <label for="style">Style:</label>
         <select id="style" name="style" required>
@@ -178,21 +232,34 @@
             <option value="Objective">Objective</option>
         </select>
         
-        <label for="structure">Structure:</label>
+        <label for="structure">Dramatic Structure:</label>
         <select id="structure" name="structure" required>
             <option value="Hero's Journey">Dramatic Style: Hero's Journey</option>
             <option value="3 Act Structure">3 Act Structure</option>
+            <option value="Plain">Plain</option>
         </select>
         
         <label for="exemplar">Exemplar:</label>
         <textarea id="exemplar" name="exemplar" required>Once there was a boy long time ago,</textarea>
         
+        <label><input type="checkbox" id="addQuestions" name="addQuestions"> Add 5 questions to make the prompt better</label>
+        
         <button type="button" onclick="generatePrompt()">Generate Prompt</button>
         <button type="button" onclick="copyToClipboard()">Copy to Clipboard</button>
         <button type="button" onclick="resetForm()">Reset</button>
+        <button type="button" onclick="showModal()">Show Output</button>
     </form>
     
-    <div id="output" class="output"></div>
+    <textarea id="output" class="output" rows="10"></textarea>
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <textarea id="modalOutput" class="output" rows="10"></textarea>
+            <button type="button" onclick="saveChanges()">Save Changes</button>
+        </div>
+    </div>
     
     <script>
         // Function to clear default text on focus
@@ -235,9 +302,10 @@
             const tone = document.getElementById('tone').value;
             const structure = document.getElementById('structure').value;
             const exemplar = document.getElementById('exemplar').value;
+            const addQuestions = document.getElementById('addQuestions').checked;
             
             // Create the prompt string
-            const prompt = `
+            let prompt = `
                 [Task: ${task}]
                 [Context: ${context}]
                 [Format: ${format}]
@@ -248,14 +316,18 @@
                 [Exemplar: ${exemplar}]
             `;
             
-            // Display the generated prompt in the output div
-            document.getElementById('output').innerText = prompt;
+            if (addQuestions) {
+                prompt += "\n\n[Questions to improve the prompt:]\n1. What is the main objective?\n2. Who is the target audience?\n3. What is the desired outcome?\n4. Are there any constraints?\n5. What is the deadline?";
+            }
+            
+            // Display the generated prompt in the output textarea
+            document.getElementById('output').value = prompt;
         }
 
         // Function to copy the generated prompt to the clipboard
         function copyToClipboard() {
             const outputDiv = document.getElementById('output');
-            const text = outputDiv.innerText;
+            const text = outputDiv.value;
             navigator.clipboard.writeText(text).then(() => {
                 alert('Prompt copied to clipboard!');
             }, (err) => {
@@ -273,6 +345,7 @@
             document.getElementById('tone').value = 'Formal';
             document.getElementById('structure').value = "Hero's Journey";
             document.getElementById('exemplar').value = 'Once there was a boy long time ago,';
+            document.getElementById('addQuestions').checked = false;
             
             // Reset text color
             document.getElementById('context').style.color = 'gray';
@@ -280,8 +353,41 @@
             document.getElementById('persona').style.color = 'gray';
             document.getElementById('exemplar').style.color = 'gray';
 
-            // Clear output div
-            document.getElementById('output').innerText = '';
+            // Clear output textarea
+            document.getElementById('output').value = '';
+        }
+
+        // Function to show the modal
+        function showModal() {
+            const modal = document.getElementById('myModal');
+            const modalOutput = document.getElementById('modalOutput');
+            const outputDiv = document.getElementById('output');
+            
+            modalOutput.value = outputDiv.value;
+            modal.style.display = "block";
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = "none";
+        }
+
+        // Function to save changes from the modal
+        function saveChanges() {
+            const modalOutput = document.getElementById('modalOutput');
+            const outputDiv = document.getElementById('output');
+            
+            outputDiv.value = modalOutput.value;
+            closeModal();
+        }
+
+        // Close the modal if the user clicks outside of the modal
+        window.onclick = function(event) {
+            const modal = document.getElementById('myModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
     </script>
 </body>
