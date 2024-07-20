@@ -223,20 +223,21 @@ function removeLine(index) {
     lines[index].style.display = 'none';
 }
 
-// Function to save changes from the modal
-function saveChanges() {
+// Function to copy the modified modal content to the clipboard
+function copyModalToClipboard() {
     const modalOutputContainer = document.getElementById('modalOutputContainer');
-    const outputDiv = document.getElementById('output');
-    
     const newLines = [];
     for (const lineElement of modalOutputContainer.children) {
         if (lineElement.style.display !== 'none') {
             newLines.push(lineElement.textContent);
         }
     }
-    
-    outputDiv.value = newLines.join('\n');
-    closeModal();
+    const modifiedText = newLines.join('\n');
+    navigator.clipboard.writeText(modifiedText).then(() => {
+        alert('Modified prompt copied to clipboard!');
+    }, (err) => {
+        alert('Failed to copy modified prompt!');
+    });
 }
 
 // Close the modal if the user clicks outside of the modal
