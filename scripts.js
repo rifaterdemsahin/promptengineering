@@ -113,4 +113,137 @@ document.getElementById('context').addEventListener('blur', function() { restore
 document.getElementById('format').addEventListener('focus', function() { clearDefaultText(this, '3 paragraphs, 300 words, 250 max characters'); });
 document.getElementById('format').addEventListener('blur', function() { restoreDefaultText(this, '3 paragraphs, 300 words, 250 max characters'); });
 
-document.getElementById('persona
+document.getElementById('persona').addEventListener('focus', function() { clearDefaultText(this, 'Enter the persona here...'); });
+document.getElementById('persona').addEventListener('blur', function() { restoreDefaultText(this, 'Enter the persona here...'); });
+
+document.getElementById('exemplar').addEventListener('focus', function() { clearDefaultText(this, 'Once there was a boy long time ago,'); });
+document.getElementById('exemplar').addEventListener('blur', function() { restoreDefaultText(this, 'Once there was a boy long time ago,'); });
+
+// Function to generate the prompt based on the input values
+function generatePrompt() {
+    // Retrieve input values from the form
+    const task = document.getElementById('task').value;
+    const context = document.getElementById('context').value;
+    const format = document.getElementById('format').value;
+    const persona = document.getElementById('persona').value;
+    const style = document.getElementById('style').value;
+    const tone = document.getElementById('tone').value;
+    const structure = document.getElementById('structure').value;
+    const exemplar = document.getElementById('exemplar').value;
+    const addQuestions = document.getElementById('addQuestions').checked;
+    const closeEnded = document.getElementById('closeEnded').checked;
+    
+    // Create the prompt string
+    let prompt = `
+        [Task: ${task}]
+        [Context: ${context}]
+        [Format: ${format}]
+        [Persona: ${persona}]
+        [Style: ${style}]
+        [Tone: ${tone}]
+        [Structure: ${structure}]
+        [Exemplar: ${exemplar}]
+    `;
+    
+    if (addQuestions) {
+        prompt += "\n\n[Questions to improve the prompt:]\n1. What is the main objective?\n2. Who is the target audience?\n3. What is the desired outcome?\n4. Are there any constraints?\n5. What is the deadline?";
+    }
+    
+    if (closeEnded) {
+        prompt += "\n\n[Close-ended question:]\nIs the prompt clear and achievable? (Yes/No)";
+    }
+
+    // Display the generated prompt in the output textarea
+    document.getElementById('output').value = prompt;
+}
+
+// Function to copy the generated prompt to the clipboard
+function copyToClipboard() {
+    const outputDiv = document.getElementById('output');
+    const text = outputDiv.value;
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Prompt copied to clipboard!');
+    }, (err) => {
+        alert('Failed to copy prompt!');
+    });
+}
+
+// Function to reset the form to default values
+function resetForm() {
+    document.getElementById('task').value = 'Create an image';
+    document.getElementById('context').value = 'Suppose year is 2400 with near galaxy';
+    document.getElementById('format').value = '3 paragraphs, 300 words, 250 max characters';
+    document.getElementById('persona').value = 'Enter the persona here...';
+    document.getElementById('style').value = 'Descriptive';
+    document.getElementById('tone').value = 'Formal';
+    document.getElementById('structure').value = "Hero's Journey";
+    document.getElementById('exemplar').value = 'Once there was a boy long time ago,';
+    document.getElementById('addQuestions').checked = true;
+    document.getElementById('closeEnded').checked = false;
+    
+    // Reset text color
+    document.getElementById('context').style.color = 'gray';
+    document.getElementById('format').style.color = 'gray';
+    document.getElementById('persona').style.color = 'gray';
+    document.getElementById('exemplar').style.color = 'gray';
+
+    // Clear output textarea
+    document.getElementById('output').value = '';
+}
+
+// Function to show the modal
+function showModal() {
+    const modal = document.getElementById('myModal');
+    const modalOutputContainer = document.getElementById('modalOutputContainer');
+    const outputDiv = document.getElementById('output');
+    
+    modalOutputContainer.innerHTML = '';
+    const lines = outputDiv.value.split('\n');
+    lines.forEach((line, index) => {
+        const lineElement = document.createElement('div');
+        lineElement.textContent = line;
+        lineElement.className = 'modal-line';
+        lineElement.onclick = () => removeLine(index);
+        modalOutputContainer.appendChild(lineElement);
+    });
+    
+    modal.style.display = "block";
+}
+
+// Function to close the modal
+function closeModal() {
+    const modal = document.getElementById('myModal');
+    modal.style.display = "none";
+}
+
+// Function to remove a line from the modal output
+function removeLine(index) {
+    const modalOutputContainer = document.getElementById('modalOutputContainer');
+    const lines = modalOutputContainer.children;
+    lines[index].style.display = 'none';
+}
+
+// Function to copy the modified modal content to the clipboard
+function copyModalToClipboard() {
+    const modalOutputContainer = document.getElementById('modalOutputContainer');
+    const newLines = [];
+    for (const lineElement of modalOutputContainer.children) {
+        if (lineElement.style.display !== 'none') {
+            newLines.push(lineElement.textContent);
+        }
+    }
+    const modifiedText = newLines.join('\n');
+    navigator.clipboard.writeText(modifiedText).then(() => {
+        alert('Modified prompt copied to clipboard!');
+    }, (err) => {
+        alert('Failed to copy modified prompt!');
+    });
+}
+
+// Close the modal if the user clicks outside of the modal
+window.onclick = function(event) {
+    const modal = document.getElementById('myModal');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
