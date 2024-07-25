@@ -1,4 +1,4 @@
-Add citations > with syntax
+Add citations > with syntax > https://youtu.be/qHYHkjafaA8
 Add the custom place holders
 Edit functionality
 Save button to templates
