@@ -1,2 +1,5 @@
-add citations > with syntax
-add the custom place holders
+Add citations > with syntax
+Add the custom place holders
+Edit functionality
+Save button to templates
+Repo url back to github
